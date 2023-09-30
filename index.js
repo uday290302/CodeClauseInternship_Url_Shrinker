@@ -35,13 +35,12 @@ app.post('/shortUrls', async (req, res) => {
 })
 
 app.get('/:shortUrl', async (req, res) => {
-  const shortUrl = await shortUrl.findOne({ short: req.params.shortUrl })
-  if (shortUrl == null) return res.sendStatus(404)
+  const shortUrl1 = await shortUrl.findOne({ short: req.params.shortUrl })
+  if (shortUrl1 == null) return res.sendStatus(404)
 
-  shortUrl.clicks++
-  shortUrl.save()
+  shortUrl1.save()
 
-  res.redirect(shortUrl.full)
+  res.redirect(shortUrl1.full)
 })
 
 app.listen(PORT, ()=>{
